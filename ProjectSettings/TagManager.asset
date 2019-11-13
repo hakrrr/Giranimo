@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Consumable
+  - BlackFade
   layers:
   - Default
   - TransparentFX

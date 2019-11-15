@@ -4,10 +4,26 @@ using UnityEngine;
 
 public class Consumable : MonoBehaviour
 {
-    [SerializeField] protected float m_FallSpeed;
+    [Range(0f,5f)][SerializeField] protected float m_FallSpeed;
     [SerializeField] protected float m_PushFactor;
     protected Rigidbody2D m_RigidBody;
     protected Rigidbody2D m_Player;
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            m_Player = collision.gameObject.GetComponent<Rigidbody2D>();
+            m_Player.AddForce(10 * Vector2.up * m_PushFactor);
+            OnDestroy();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(this.gameObject);
+    }
+
 
     private void Awake()
     {
@@ -19,16 +35,8 @@ public class Consumable : MonoBehaviour
         m_RigidBody.velocity = 0.1f * Vector2.down * m_FallSpeed;
     }
 
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void FixedUpdate()
     {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            m_Player = collision.gameObject.GetComponent<Rigidbody2D>();
-            m_Player.AddForce(10 * Vector2.up * m_PushFactor);
-            Destroy(this.gameObject);
-        }
+        if (m_RigidBody.transform.position.y < -5.5f) OnDestroy();
     }
-
 }

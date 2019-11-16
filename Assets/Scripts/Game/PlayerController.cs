@@ -21,6 +21,12 @@ public class PlayerController : MonoBehaviour
         m_RigidBody.velocity = Vector3.SmoothDamp(m_RigidBody.velocity, m_InitDirect + (m_Direction * m_MoveSpeed), ref m_Velocity, .1f);
     }
 
+    void OnDeath()
+    {
+        Destroy(this.gameObject);
+        SceneMgr.Instance.switchToScene(2);
+    }
+
     private void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -34,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (m_RigidBody.transform.position.y < -5.5f) OnDeath();
         if (Input.touchCount > 0) moveCharacter(Input.GetTouch(0));
         else m_RigidBody.velocity = Vector3.SmoothDamp(m_RigidBody.velocity, m_InitDirect, ref m_Velocity, .05f); ;
     }

@@ -1,0 +1,38 @@
+Bild: Giraffe trinkt aus Teich, schaut nach vorne
+Bild: Giraffe trinkt, schaut nach hinten
+Bild: Giraffen Bauch, "Grumble Grumble"
+Bild: Giraffen Kopf wieder, schaut nach oben
+Bild: ein einzelnes Blatt an einem Ast
+Text: "HUNGRY?"
+Bild: nah am Giraffenkopf, große Augen
+Text: andere Schrift u Farbe "yeah"
+Text: "EAT!"
+Text: "A Leaf?" "EAT IT!"
+Text: "A Stick?" "MONCH THAT!"
+Text: "Trees?" "EAT'EM!"
+---------Delays werden kürzer------------
+Text: "Clouds?" "SLURP AWAY!!"
+Text: "Planes??" "YUMMYY!!"
+Text: "Humans?" "maybe not that"
+Text: "Empty Planes?" "EMPTY PLANES!!"
+------------noch schneller----------------
+Text: "PLANETS!"
+Text: "HOUSES!"
+Text: "STARS!"
+Text: "mouses?" klein geschrieben "yeah it rhimes now"
+Text: "GALAXIES!"
+Text: "EVERYTHING!!!"
+...
+
+
+Text mit passenden Bildern: (am besten auch GamePlay)
+"Unlock Skins! Grow to Infinity and Beyond! And Most Importantly:
+EAT
+EAT
+EAT
+
+("Spieltitel" does not support obeasity)"
+
+
+Bild: Viele Ebenen des Spiels übereinander, kleine Giraffe am unteren Bildrand zentriert, 
+	Titel des Spiels zentriert auf 2/3 Bildschirmhöhe, darunter Angaben zu release Plattformen 

@@ -5,10 +5,15 @@ using UnityEngine;
 public class Consumable : MonoBehaviour
 {
     [Range(0f,5f)][SerializeField] protected float m_FallSpeed;
-    [SerializeField] protected float m_PushFactor;
+    private float m_PushFactor;
     protected Rigidbody2D m_RigidBody;
     protected Rigidbody2D m_Player;
 
+    protected float PushFactor
+    {
+        get { return m_PushFactor; }
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Gameloop : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Gameloop : MonoBehaviour
 
     private float m_Y = 6f;
     private float m_MaxRange = 2.3f;
+    private float m_currHeight = 0;
+    private TextMeshProUGUI m_heightScore = null;
 
     #endregion
 
@@ -37,8 +40,22 @@ public class Gameloop : MonoBehaviour
         Instantiate(m_Consumable, new Vector2(Random.Range(-m_MaxRange, m_MaxRange), m_Y), Quaternion.identity);
     }
 
+    private void Awake()
+    {
+        m_heightScore = GameObject.Find("HeightScore").GetComponent<TextMeshProUGUI>();
+        Debug.Log(m_heightScore.text);
+    }
+
     private void Start()
     {
         StartCoroutine(Spawn());
     }
+
+    private void FixedUpdate()
+    {
+        m_currHeight += Time.deltaTime * Gameloop.g_Scroll;
+        m_heightScore.text = Mathf.Floor(m_currHeight) + "m";
+    }
+
+
 }

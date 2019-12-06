@@ -53,7 +53,7 @@ public class Gameloop : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_currHeight += Time.deltaTime * Gameloop.g_Scroll;
+        m_currHeight += Gameloop.g_Scroll * .05f;
         m_heightScore.text = Mathf.Floor(m_currHeight) + "m";
     }
 

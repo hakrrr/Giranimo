@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6801838222575675959}
   - component: {fileID: 6801838222575675952}
   m_Layer: 0
-  m_Name: Consumable
+  m_Name: Apple
   m_TagString: Consumable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -129,8 +129,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 6801838222575675953}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2a73649503192284fb46e6a2b4338aa3, type: 3}
+  m_Script: {fileID: 11500000, guid: c00e674e3bd96f34bbea6d1ff165f3f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FallSpeed: 5
-  m_PushFactor: 6

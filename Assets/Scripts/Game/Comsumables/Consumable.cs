@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Consumable : MonoBehaviour
+public abstract class Consumable : MonoBehaviour
 {
-    [Range(0f,5f)][SerializeField] protected float m_FallSpeed;
-    private float m_PushFactor;
-    protected Rigidbody2D m_RigidBody;
-    protected Rigidbody2D m_Player;
+    private readonly float m_PushFactor;
+    private float m_FallSpeed;
+    private Rigidbody2D m_RigidBody;
+    private Rigidbody2D m_Player;
 
-    protected float PushFactor
+    //Set readonly Push
+    public Consumable(float push)
     {
-        get { return m_PushFactor; }
-
+        m_PushFactor = push;
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -29,7 +30,6 @@ public class Consumable : MonoBehaviour
         Destroy(this.gameObject);
     }
 
-
     private void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -37,11 +37,12 @@ public class Consumable : MonoBehaviour
 
     private void Start()
     {
-        m_RigidBody.velocity = 0.1f * Vector2.down * m_FallSpeed;
+        m_RigidBody.velocity = 0.1f * Vector2.down * Gameloop.g_Scroll;
     }
 
     private void FixedUpdate()
     {
         if (m_RigidBody.transform.position.y < -5.5f) OnDestroy();
     }
+
 }

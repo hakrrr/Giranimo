@@ -6,7 +6,7 @@ using TMPro;
 public class Gameloop : MonoBehaviour
 {
     
-    [Range(1f, 5f)][SerializeField] private float m_SpawnTime = 1f;
+    [Range(1f, 5f)][SerializeField] private float m_SpawnTime = 0.5f;
     [SerializeField] private GameObject m_Consumable = null;
 
     #region Private var

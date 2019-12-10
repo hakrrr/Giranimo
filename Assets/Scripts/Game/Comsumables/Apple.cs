@@ -5,5 +5,5 @@ using UnityEngine;
 public class Apple : Consumable
 {
 
-    public Apple() : base(3f) { }
+    public Apple() : base(6f) { }
 }

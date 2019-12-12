@@ -5,7 +5,6 @@ using UnityEngine;
 public abstract class Consumable : MonoBehaviour
 {
     private readonly float m_PushFactor;
-    private float m_FallSpeed;
     private Rigidbody2D m_RigidBody;
     private Rigidbody2D m_Player;
 
@@ -20,7 +19,7 @@ public abstract class Consumable : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             m_Player = collision.gameObject.GetComponent<Rigidbody2D>();
-            m_Player.AddForce(10 * Vector2.up * m_PushFactor);
+            m_Player.AddForce(5 * Vector2.up * m_PushFactor, ForceMode2D.Impulse);
             OnDestroy();
         }
     }

@@ -24,7 +24,6 @@ public class Gameloop : MonoBehaviour
 
     #endregion
 
-
     private IEnumerator Spawn()
     {
         while (true)
@@ -43,7 +42,6 @@ public class Gameloop : MonoBehaviour
     private void Awake()
     {
         m_heightScore = GameObject.Find("HeightScore").GetComponent<TextMeshProUGUI>();
-        Debug.Log(m_heightScore.text);
     }
 
     private void Start()

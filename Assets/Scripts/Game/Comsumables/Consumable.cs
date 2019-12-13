@@ -36,7 +36,7 @@ public abstract class Consumable : MonoBehaviour
 
     private void Start()
     {
-        m_RigidBody.velocity = 0.3f * Vector2.down * Gameloop.g_Scroll;
+        m_RigidBody.velocity = 0.7f * Vector2.down * Gameloop.g_Scroll;
     }
 
     private void FixedUpdate()

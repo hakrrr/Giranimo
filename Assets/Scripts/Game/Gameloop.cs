@@ -6,15 +6,23 @@ using TMPro;
 public class Gameloop : MonoBehaviour
 {
     
-    [Range(1f, 5f)][SerializeField] private float m_SpawnTime = 0.5f;
+    [Range(1f, 5f)][SerializeField] private float m_SpawnConsum = 0.5f;
+    [Range(1f, 5f)][SerializeField] private float m_SpawnObst = 0.5f;
     [SerializeField] private GameObject m_Consumable = null;
+    [SerializeField] private GameObject m_Obstacle = null;
 
     #region Private var
 
     private float m_Y = 6f;
-    private float m_MaxRange = 2.3f;
-    private float m_currHeight = 0;
+    public static float m_currHeight = 0;
     private TextMeshProUGUI m_heightScore = null;
+
+    #endregion
+
+    #region Constants
+    private const float m_MaxRange = 2.3f;
+    private const float k_minGap = 1f;
+    private const float k_MaxGap = 2f;
 
     #endregion
 
@@ -24,19 +32,23 @@ public class Gameloop : MonoBehaviour
 
     #endregion
 
-    private IEnumerator Spawn()
+    private IEnumerator ConsumSpawner()
     {
         while (true)
         {
-            yield return new WaitForSeconds(m_SpawnTime);
-            SpawnConsume();
+            yield return new WaitForSeconds(m_SpawnConsum);
+            Instantiate(m_Consumable, new Vector2(Random.Range(-m_MaxRange, m_MaxRange), m_Y), Quaternion.identity);
         }
 
     }
-
-    private void SpawnConsume()
+    private IEnumerator ObstSpawner()
     {
-        Instantiate(m_Consumable, new Vector2(Random.Range(-m_MaxRange, m_MaxRange), m_Y), Quaternion.identity);
+        while (true)
+        {
+            yield return new WaitForSeconds(m_SpawnObst);
+            GameObject obst = Instantiate(m_Obstacle, new Vector2(Random.Range(-m_MaxRange, m_MaxRange), m_Y), Quaternion.identity);
+            obst.GetComponent<Obstacle>().SetDist(Random.Range(k_minGap, k_MaxGap));
+        }
     }
 
     private void Awake()
@@ -46,7 +58,9 @@ public class Gameloop : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Spawn());
+        m_currHeight = 0;
+        StartCoroutine(ConsumSpawner());
+        StartCoroutine(ObstSpawner());
     }
 
     private void FixedUpdate()

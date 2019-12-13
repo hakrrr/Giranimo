@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    [Range(1f,4f)][SerializeField] private float m_GapDist;
     private Vector2 m_InitDirect;
     private Rigidbody2D m_RigidBody;
     private Transform m_CubeR;
     private Transform m_CubeL;
-    
-    private const float k_FallSpeed = 1.3f;
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            collider.GetComponent<PlayerController>().OnDeath();
+        }
+    }
+
+    public void SetDist(float dist)
+    {
+        m_CubeR.position += new Vector3(dist / 2, 0, 0);
+        m_CubeL.position -= new Vector3(dist / 2, 0, 0);
+    }
+
+    private const float k_FallSpeed = 2f;
 
     private void OnDestroy()
     {
@@ -23,8 +36,6 @@ public class Obstacle : MonoBehaviour
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_CubeR = transform.GetChild(0);
         m_CubeL = transform.GetChild(1);
-        m_CubeR.position += new Vector3(m_GapDist / 2, 0, 0);
-        m_CubeL.position += new Vector3(-m_GapDist / 2, 0, 0);
     }
 
     private void Start()

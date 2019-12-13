@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
     [Range(1f, 10f)][SerializeField] protected float m_MoveSpeed;
-    [Range(0f,5f)][SerializeField] protected float m_FallSpeed;
+    [Range(0f,10f)][SerializeField] protected float m_FallSpeed;
     
     protected Rigidbody2D m_RigidBody;
     protected Vector3 m_CurrPos;
@@ -26,9 +27,10 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    void OnDeath()
+    public void OnDeath()
     {
         Destroy(this.gameObject);
+        if (SceneMgr.highScore < Gameloop.m_currHeight) SceneMgr.highScore = Gameloop.m_currHeight;
         SceneMgr.Instance.switchToScene(2);
     }
 
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         m_RigidBody = GetComponent<Rigidbody2D>();
         m_MassCenter = GameObject.Find("MassCenter").GetComponent<Transform>();
         m_InitDirect = k_Scale * Vector2.down * m_FallSpeed;
+        
     }
 
     private void Start()
@@ -51,4 +54,5 @@ public class PlayerController : MonoBehaviour
         if (m_RigidBody.transform.position.y < -5.5f) OnDeath();
         if (Input.touchCount > 0) moveCharacter(Input.GetTouch(0));
     }
+
 }

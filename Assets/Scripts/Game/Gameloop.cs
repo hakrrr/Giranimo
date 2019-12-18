@@ -5,7 +5,7 @@ using TMPro;
 
 public class Gameloop : MonoBehaviour
 {
-    
+
     [Range(1f, 5f)][SerializeField] private float m_SpawnConsum = 0.5f;
     [Range(1f, 5f)][SerializeField] private float m_SpawnObst = 0.5f;
     [SerializeField] private GameObject m_Consumable = null;
@@ -31,6 +31,11 @@ public class Gameloop : MonoBehaviour
     public static float g_Scroll = 5f;
 
     #endregion
+
+    public void SetSpawnConsum(float time)
+    {
+        m_SpawnConsum = time;
+    }
 
     private IEnumerator ConsumSpawner()
     {

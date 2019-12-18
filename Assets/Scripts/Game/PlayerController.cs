@@ -34,6 +34,15 @@ public class PlayerController : MonoBehaviour
         SceneMgr.Instance.switchToScene(2);
     }
 
+    public void LastResort()
+    {
+        GameObject.Find("Gameloop").GetComponent<Gameloop>().SetSpawnConsum(1f);
+    }
+
+    public void LastResortEnd()
+    {
+        GameObject.Find("Gameloop").GetComponent<Gameloop>().SetSpawnConsum(1.7f);
+    }
     private void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody2D>();
@@ -52,6 +61,8 @@ public class PlayerController : MonoBehaviour
         m_CurrPos = m_RigidBody.position;
         m_RigidBody.velocity = Vector3.SmoothDamp(m_RigidBody.velocity, m_InitDirect, ref m_Velocity, .05f);
         if (m_RigidBody.transform.position.y < -5.5f) OnDeath();
+        if (m_RigidBody.transform.position.y < -1.5f) LastResort();
+        else LastResortEnd();
         if (Input.touchCount > 0) moveCharacter(Input.GetTouch(0));
     }
 

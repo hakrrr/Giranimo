@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3a345254920e845abcf90b112047d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_SpawnConsum: 1.75
+  m_SpawnConsum: 1.7
   m_SpawnObst: 2.4
   m_Consumable: {fileID: 6801838222575675953, guid: da30611e03475b141985a8d87d29ab30,
     type: 3}
@@ -1026,7 +1026,12 @@ PrefabInstance:
     - target: {fileID: 8791199574093022443, guid: fcb5c5996542acf47bc813248caa325e,
         type: 3}
       propertyPath: m_FallSpeed
-      value: 6.64
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8791199574093022443, guid: fcb5c5996542acf47bc813248caa325e,
+        type: 3}
+      propertyPath: m_MoveSpeed
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8791199574093022440, guid: fcb5c5996542acf47bc813248caa325e, type: 3}
